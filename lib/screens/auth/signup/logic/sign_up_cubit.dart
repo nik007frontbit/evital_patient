@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:evital_patient/cubit/signup/sign_up_repo.dart';
+import 'package:evital_patient/screens/auth/signup/logic/sign_up_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'sign_up_state.dart';

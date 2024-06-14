@@ -11,7 +11,8 @@ class SignUpRepo {
     required String referral,
   }) async {
     try {
-      Response response = await api.sendRequest.post("/signup_sendotp", data: {
+      Response response =
+          await api.sendRequest.post("/login/signup_sendotp", data: {
         "mobile": phone,
         "firstname": firstName,
         "lastname": lastName,
@@ -63,7 +64,7 @@ class SignUpRepo {
     required String pinCode,
   }) async {
     try {
-      Response response = await api.sendRequest.post("/signup", data: {
+      Response response = await api.sendRequest.post("/login/signup", data: {
         "mobile": phone,
         "firstname": firstName,
         "lastname": lastName,
