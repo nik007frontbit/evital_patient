@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:evital_patient/cubit/login/login_repo.dart';
 import 'package:meta/meta.dart';
 
-part 'login_state.dart';
+import 'login_repo.dart';
+import 'login_state.dart';
+
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());

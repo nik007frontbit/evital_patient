@@ -51,7 +51,7 @@ class Data {
 class ReferralData {
   ReferralData();
 
-  ReferralData.fromJson(Map<String, dynamic> json) {}
+  ReferralData.fromJson(Map<String, dynamic> json);
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

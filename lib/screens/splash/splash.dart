@@ -1,8 +1,8 @@
-import 'package:evital_patient/screens/auth/login.dart';
+import 'package:evital_patient/screens/auth/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../cubit/splash/splash_cubit.dart';
+import 'logic/splash_cubit.dart';
 
 
 class SplashScreen extends StatelessWidget {

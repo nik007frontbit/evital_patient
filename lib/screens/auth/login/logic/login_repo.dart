@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
-import '../../api/api.dart';
+import '../../../../api/api.dart';
+
 
 class LoginRepo {
   Api api = Api();
@@ -10,7 +11,7 @@ class LoginRepo {
     required String password,
   }) async {
     try {
-      Response response = await api.sendRequest.post("", data: {
+      Response response = await api.sendRequest.post("/login", data: {
         "mobile": phone,
         "password": password,
         "platform": "android",
