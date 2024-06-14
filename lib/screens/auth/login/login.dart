@@ -1,13 +1,14 @@
-import 'package:evital_patient/cubit/login/login_cubit.dart';
 import 'package:evital_patient/cubit/password/password_cubit.dart';
-import 'package:evital_patient/screens/auth/signup.dart';
+import 'package:evital_patient/screens/auth/signup/signup.dart';
+import 'package:evital_patient/screens/order/order_screen.dart';
 import 'package:evital_patient/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../cubit/password/password_state.dart';
-import '../dashboard/home.dart';
+import '../../../cubit/password/password_state.dart';
+import 'logic/login_cubit.dart';
+import 'logic/login_state.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -49,7 +50,8 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    commonTextField(_phoneController, "Mobile", isMobile: true),
+                    commonTextField(_phoneController, "Mobile",
+                        isMobile: true, isPhone: true),
                     const SizedBox(
                       height: 15,
                     ),
@@ -70,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
+                              builder: (context) => OrderScreen(),
                             ),
                           );
                         }
@@ -181,6 +183,7 @@ class LoginScreen extends StatelessWidget {
     String name, {
     bool isOptional = false,
     bool isMobile = false,
+    bool isPhone = false,
   }) {
     return TextFormField(
       controller: controller,
@@ -204,6 +207,8 @@ class LoginScreen extends StatelessWidget {
           return '$name is Required';
         } else if (isMobile == true && !RegExp(r'^[0-9]+$').hasMatch(value)) {
           return 'Mobile number can only contain digits';
+        } else if (isPhone == true && value.length != 10) {
+          return 'Mobile number can 10 contain digits';
         }
         return null;
       },

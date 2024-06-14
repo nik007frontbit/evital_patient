@@ -1,13 +1,13 @@
-import 'package:evital_patient/cubit/signup/sign_up_cubit.dart';
-import 'package:evital_patient/screens/dashboard/home.dart';
+import 'package:evital_patient/screens/order/order_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
-import '../../cubit/password/password_cubit.dart';
-import '../../cubit/password/password_state.dart';
-import '../../utils/colors.dart';
+import '../../../cubit/password/password_cubit.dart';
+import '../../../cubit/password/password_state.dart';
+import '../../../utils/colors.dart';
+import 'logic/sign_up_cubit.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -72,6 +72,7 @@ class SignUpScreen extends StatelessWidget {
                       _mobileController,
                       "Mobile",
                       isMobile: true,
+                      isPhone: true,
                     ),
                     const SizedBox(
                       height: 15,
@@ -84,7 +85,6 @@ class SignUpScreen extends StatelessWidget {
                     BlocBuilder<SignUpCubit, SignUpState>(
                       builder: (context, state) {
                         if (state is SignUpContinue) {
-                          print("object");
                           return Column(
                             children: [
                               const SizedBox(
@@ -193,7 +193,7 @@ class SignUpScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
+                              builder: (context) => OrderScreen(),
                             ),
                           );
                         }
@@ -277,6 +277,7 @@ class SignUpScreen extends StatelessWidget {
     String name, {
     bool isOptional = false,
     bool isMobile = false,
+    bool isPhone = false,
   }) {
     return TextFormField(
       controller: controller,
@@ -300,6 +301,8 @@ class SignUpScreen extends StatelessWidget {
           return '$name is Required';
         } else if (isMobile == true && !RegExp(r'^[0-9]+$').hasMatch(value)) {
           return 'Mobile number can only contain digits';
+        } else if (isPhone == true && value.length != 10) {
+          return 'Mobile number can 10 contain digits';
         }
         return null;
       },
